@@ -60,4 +60,8 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelect
 document.querySelector('#recordWeight').onclick=()=>{const start=document.querySelector('#startDate').value;const wt=Number(document.querySelector('#weightInput').value);if(!start||!Number.isFinite(wt)||wt<35||wt>250){alert('Проверь дату и вес');return}state.start=start;state.weight=wt;state.weights.push({date:localDate(),weight:wt});save();renderProgress();renderTraining();renderHistory()};document.querySelector('#exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='myfit-backup-'+localDate()+'.json';a.click();URL.revokeObjectURL(a.href)};
 let timerInterval=null,remaining=90;function showTime(){document.querySelector('#timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0')};document.querySelector('#timerBtn').onclick=()=>{if(timerInterval){clearInterval(timerInterval);timerInterval=null;remaining=90;showTime();document.querySelector('#timerBtn').textContent='▶ Отдых';return}remaining=90;showTime();document.querySelector('#timerBtn').textContent='■ Сброс';timerInterval=setInterval(()=>{remaining--;showTime();if(remaining<=0){clearInterval(timerInterval);timerInterval=null;document.querySelector('#timerBtn').textContent='▶ Отдых';if(navigator.vibrate)navigator.vibrate(200);alert('Отдых завершён')}},1000)};
 renderTraining();renderHistory();renderProgress();if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
-</script></body></html>
+</script>
+<script src="./myfit-upgrade.js?v=14"></script>
+<script src="./myfit-nutrition.js?v=15"></script>
+</body>
+</html>

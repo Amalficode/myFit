@@ -1,4 +1,4 @@
-const CACHE='myfit-v19';
+const CACHE='myfit-v20';
 const ASSETS=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./lat-pulldown.jpg","./myfit-upgrade.js","./myfit-nutrition.js","./myfit-focus.js","./myfit-images.js","./myfit-report.js","./images/lat-pulldown.svg","./images/seated-row.svg","./images/glute-bridge.svg","./images/leg-press.svg","./images/biceps-curl.svg","./images/bird-dog.svg","./images/goblet-squat.svg","./images/romanian-deadlift.svg","./images/chest-press.svg","./images/shoulder-press.svg","./images/triceps-pushdown.svg","./images/dead-bug.svg","./images/step-up.svg","./images/leg-curl.svg","./images/lateral-raise.svg","./images/reverse-fly.svg","./images/side-plank.svg","./images/hip-abduction.svg","./images/plank.svg"];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

@@ -27,7 +27,10 @@
   const style=document.createElement('style');
   style.textContent = [
     '.mf-photo{margin:12px 0 14px;padding:0;border-radius:15px;overflow:hidden;border:1px solid #e0e9e3;background:#f7f8f7}',
-    '.mf-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#f7f8f7}',
+    '.mf-photo-frame{position:relative;aspect-ratio:4/3;overflow:hidden;background:#f7f8f7}',
+    '.mf-photo-frame img{position:absolute;left:50%;top:50%;display:block;width:100%;height:auto;transform:translate(-50%,-50%) scale(2.35)}',
+    '.mf-photo[data-slug="plank"] .mf-photo-frame{aspect-ratio:2.8/1}',
+    '.mf-photo[data-slug="plank"] .mf-photo-frame img{transform:translate(-50%,-50%) scale(1.55)}',
     '.mf-photo figcaption{color:#60766c;padding:7px 11px;background:white;font-size:12px;line-height:1.4}'
   ].join('\n');
   document.head.appendChild(style);
@@ -45,13 +48,17 @@
       card.querySelector('.mf-photo')?.remove();
       const figure=document.createElement('figure');
       figure.className='mf-photo';
+      figure.dataset.slug=slug;
       const img=document.createElement('img');
       img.src='./images/'+slug+'.svg';
       img.alt='Иллюстрация упражнения: '+name;
       img.loading='lazy';
       img.decoding='async';
       img.onerror=()=>{figure.hidden=true};
-      figure.appendChild(img);
+      const frame=document.createElement('div');
+      frame.className='mf-photo-frame';
+      frame.appendChild(img);
+      figure.appendChild(frame);
       const caption=document.createElement('figcaption');
       caption.textContent='Иллюстрация техники · ориентируйся на подсказку и видео ниже';
       figure.appendChild(caption);

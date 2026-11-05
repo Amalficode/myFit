@@ -57,10 +57,10 @@ done
 
 ## 4. Развернуть сервер из GitHub
 
-Скопируйте **подготовленную ветку** из GitHub в Google Cloud Shell (пока она не объединена с main):
+Скопируйте актуальную версию из GitHub в Google Cloud Shell:
 
 ```bash
-git clone --branch feature/google-health-autosync-2026-11 https://github.com/Amalficode/myFit.git
+git clone https://github.com/Amalficode/myFit.git
 cd myFit
 ```
 

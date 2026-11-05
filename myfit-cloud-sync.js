@@ -129,5 +129,7 @@
     history.replaceState(null,'',location.pathname+location.search);
     status('✅ Google предоставил разрешение. Проверяем синхронизацию…');
   }
+  const version=document.querySelector('.top .pill');
+  if(version)version.textContent='8 недель · версия 1.9';
   if(config.server && config.key)checkAndSync();
 })();
